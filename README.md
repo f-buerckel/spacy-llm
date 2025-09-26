@@ -8,3 +8,6 @@
 | Completions endpoint | `http://localhost:8001/v1/completions` | [`model.py`](spacy_llm/models/rest/openai/model.py) |
 | Models healthcheck URL | `http://localhost:8001/v1/models` | [`model.py`](spacy_llm/models/rest/openai/model.py) |
 | Additional OSS model | Added registry `gpt-oss-20b` (`openai/gpt-oss-20b`) | [`registry.py`](spacy_llm/models/rest/openai/registry.py) |
+
+### Added example for NER using VLLM and gpt-oss
+[Entity Recognition using VLLM and GPT-oss](usage_examples/ner_v3_vllm_gpt-oss/)
