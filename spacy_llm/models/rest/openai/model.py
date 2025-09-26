@@ -11,8 +11,8 @@ from ..base import REST
 
 
 class Endpoints(str, Enum):
-    CHAT = "https://api.openai.com/v1/chat/completions"
-    NON_CHAT = "https://api.openai.com/v1/completions"
+    CHAT = "http://localhost:8001/v1/chat/completions"
+    NON_CHAT = "http://localhost:8001/v1/completions"
 
 
 class OpenAI(REST):
@@ -41,7 +41,7 @@ class OpenAI(REST):
     def _verify_auth(self) -> None:
         r = self.retry(
             call_method=requests.get,
-            url="https://api.openai.com/v1/models",
+            url="http://localhost:8001/v1/models",
             headers=self._credentials,
             timeout=self._max_request_time,
         )
@@ -170,4 +170,6 @@ class OpenAI(REST):
             "curie": 2049,
             "babbage": 2049,
             "ada": 2049,
+            # oss
+            "openai/gpt-oss-20b": 8000,
         }

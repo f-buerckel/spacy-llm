@@ -832,3 +832,32 @@ def openai_ada(
         max_request_time=max_request_time,
         context_length=None,
     )
+
+@registry.llm_models("gpt-oss-20b")
+def openai_gpt_oss(
+    config: Dict[Any, Any] = SimpleFrozenDict(),
+    name: Literal["openai/gpt-oss-20b"] = "openai/gpt-oss-20b",  # noqa: F722
+    strict: bool = OpenAI.DEFAULT_STRICT,
+    max_tries: int = OpenAI.DEFAULT_MAX_TRIES,
+    interval: float = OpenAI.DEFAULT_INTERVAL,
+    max_request_time: float = OpenAI.DEFAULT_MAX_REQUEST_TIME,
+    endpoint: Optional[str] = None,
+) -> OpenAI:
+    """Returns OpenAI instance for 'ada' model using REST to prompt API.
+
+    config (Dict[Any, Any]): LLM config passed on to the model's initialization.
+    name (Optional[Literal["ada"]]): Model to use.
+    RETURNS (OpenAI): OpenAI instance for 'ada' model
+
+    DOCS: https://spacy.io/api/large-language-models#models
+    """
+    return OpenAI(
+        name=name,
+        endpoint=endpoint or Endpoints.CHAT.value,
+        config=config,
+        strict=strict,
+        max_tries=max_tries,
+        interval=interval,
+        max_request_time=max_request_time,
+        context_length=None,
+    )
